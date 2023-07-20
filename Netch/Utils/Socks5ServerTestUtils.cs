@@ -35,9 +35,10 @@ public static class Socks5ServerTestUtils
             return new NatTypeTestResult { Result = "Wrong STUN Server!" };
         }
 
-        using IUdpProxy proxy = ProxyFactory.CreateProxy(ProxyType.Socks5, new IPEndPoint(IPAddress.Loopback, 0), socks5Option);
+        using IUdpProxy proxy = ProxyFactory.CreateProxy(ProxyType.Socks5, new IPEndPoint(IPAddress.Any, 0), socks5Option);
         using var client = new StunClient5389UDP(new IPEndPoint(ip, port), local, proxy);
 
+        
         await client.ConnectProxyAsync(ctx);
         try
         {

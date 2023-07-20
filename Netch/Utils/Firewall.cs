@@ -62,13 +62,27 @@ public static class Firewall
 
     private static void AddFwRule(string ruleName, string exeFullPath)
     {
-        var rule = new FirewallWASRule(ruleName,
+        var ruleIn = new FirewallWASRule(ruleName,
             exeFullPath,
             FirewallAction.Allow,
             FirewallDirection.Inbound,
             FirewallProfiles.Private | FirewallProfiles.Public | FirewallProfiles.Domain);
 
-        FirewallManager.Instance.Rules.Add(rule);
+      
+
+        FirewallManager.Instance.Rules.Add(ruleIn);
+
+        //windows default allow outbound
+        //var ruleOut = new FirewallWASRule(ruleName,
+        //  exeFullPath,
+        //  FirewallAction.Allow,
+        //  FirewallDirection.Outbound,
+        //  FirewallProfiles.Private | FirewallProfiles.Public | FirewallProfiles.Domain);
+
+
+        //FirewallManager.Instance.Rules.Add(ruleOut);
+
+        
     }
 
     #endregion

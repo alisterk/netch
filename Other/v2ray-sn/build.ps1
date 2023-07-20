@@ -20,6 +20,8 @@ Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/SagerNet/v2ray-core/27
 
 $Env:CGO_ENABLED='0'
 $Env:GOROOT_FINAL='/usr'
+$env:GO111MODULE = "on"
+$env:GOPROXY = "https://goproxy.cn"
 
 $Env:GOOS='windows'
 $Env:GOARCH='amd64'
